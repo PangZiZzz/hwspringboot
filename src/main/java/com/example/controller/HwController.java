@@ -133,7 +133,7 @@ public class HwController {
     }
 
     //12.根据id来修改obj_isdel
-    @PostMapping("updateByIdHwSend")
+    @PostMapping("/updateByIdHwSend")
     public boolean updateByIdHwSend(HwSend hwSend) {
         hwSend.setSendIsdel(1);
         return hwSendService.updateById(hwSend);
@@ -167,7 +167,7 @@ public class HwController {
     //17.根据id来修改SysHwSendvo
     @CrossOrigin
     @GetMapping("/selectSysHwSendvoByid")
-    public boolean selectSysHwSendvoByid(SysHwSendvo sysHwSendvo){
-        return sysHwSendvoService.updateById(sysHwSendvo);
+    public List<SysHwSendvo> selectSysHwSendvoByid(Integer id ){
+        return sysHwSendvoService.selectSysHwsendvoByid(id);
     }
 }

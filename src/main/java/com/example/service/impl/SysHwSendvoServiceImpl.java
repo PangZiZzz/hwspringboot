@@ -6,6 +6,9 @@ import com.example.pojo.SysHwSendvo;
 import com.example.service.SysHwSendvoService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * @author : Ghost
  * @className :  SysHwSendvoServiceImpl
@@ -15,5 +18,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysHwSendvoServiceImpl extends ServiceImpl<SysHwSendvoMapper, SysHwSendvo> implements SysHwSendvoService {
-
+    @Resource
+    private SysHwSendvoMapper sysHwSendvoMapper;
+    @Override
+    public List<SysHwSendvo> selectSysHwsendvoByid(Integer id) {
+        return sysHwSendvoMapper.selectSysHwsendvoByid(id);
+    }
 }
