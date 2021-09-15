@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.pojo.HwObj;
 import com.example.pojo.HwSend;
 import com.example.pojo.HwUser;
+import com.example.pojo.SysHwSendvo;
 import com.example.service.HwObjService;
 import com.example.service.HwSendService;
 import com.example.service.HwUserService;
@@ -152,4 +153,11 @@ public class HwController {
     public boolean updateHwSend(HwSend hwSend) {
         return hwSendService.updateById(hwSend);
     }
+
+    //16.后台管理展示send表
+    @PostMapping("sysHwSendAll")
+    public List<SysHwSendvo> sysHwSendAll(){
+        return hwSendService.sysHwSendAll();
+    }
+
 }

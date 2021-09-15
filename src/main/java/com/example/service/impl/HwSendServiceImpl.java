@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.mapper.HwSendMapper;
 import com.example.pojo.HwObj;
 import com.example.pojo.HwSend;
+import com.example.pojo.SysHwSendvo;
 import com.example.service.HwObjService;
 import com.example.service.HwSendService;
 import com.example.until.ParseJSON;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.until.Util.getWeather;
@@ -28,10 +30,15 @@ public class HwSendServiceImpl extends ServiceImpl<HwSendMapper, HwSend> impleme
 
     @Resource
     private HwSendService hwSendService;
-
     @Resource
     private HwObjService hwObjService;
+    @Resource
+    private HwSendMapper hwSendMapper;
 
+    @Override
+    public List<SysHwSendvo> sysHwSendAll() {
+        return hwSendMapper.sysHwSendAll();
+    }
 
     @Override
     @Transactional
