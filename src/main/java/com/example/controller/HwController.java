@@ -8,7 +8,10 @@ import com.example.pojo.SysHwSendvo;
 import com.example.service.HwObjService;
 import com.example.service.HwSendService;
 import com.example.service.HwUserService;
+import com.example.service.SysHwSendvoService;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +35,8 @@ public class HwController {
     private HwSendService hwSendService;
     @Resource
     private HwObjService hwObjService;
-
+    @Resource
+    private SysHwSendvoService sysHwSendvoService;
     //1.用户的注册
     @PostMapping("addHwUser")
     public Boolean addHwUser(HwUser hwUser) {
@@ -148,16 +152,22 @@ public class HwController {
         return hwObjService.updateById(hwObj);
     }
 
-    //15.根据id来修改HwUser
-    @PostMapping("updateHwSend")
+    //15.根据id来修改HwSend
+    @GetMapping("/updateHwSend")
     public boolean updateHwSend(HwSend hwSend) {
         return hwSendService.updateById(hwSend);
     }
 
     //16.后台管理展示send表
-    @PostMapping("sysHwSendAll")
+    @CrossOrigin
+    @GetMapping("/sysHwSendAll")
     public List<SysHwSendvo> sysHwSendAll(){
         return hwSendService.sysHwSendAll();
     }
-
+    //17.根据id来修改SysHwSendvo
+    @CrossOrigin
+    @GetMapping("/selectSysHwSendvoByid")
+    public boolean selectSysHwSendvoByid(SysHwSendvo sysHwSendvo){
+        return sysHwSendvoService.updateById(sysHwSendvo);
+    }
 }
